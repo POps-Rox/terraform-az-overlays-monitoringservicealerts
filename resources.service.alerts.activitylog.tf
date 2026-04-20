@@ -4,7 +4,7 @@
 resource "azurerm_monitor_activity_log_alert" "activity_log_alert" {
   for_each = var.activity_log_alerts
 
-  name        = coalesce(each.value.custom_name, data.azurenoopsutils_resource_name.activity_log_alerts[each.key].result)
+  name        = coalesce(each.value.custom_name, data.popsrox_resource_name.activity_log_alerts[each.key].result)
   description = each.value.description
 
   resource_group_name = coalesce(each.value.resource_group_name, var.monitoring_resource_group_name)
