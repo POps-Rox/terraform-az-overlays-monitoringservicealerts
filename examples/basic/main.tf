@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "rg" {
 
 module "mod_alerting" {
   depends_on = [azurerm_resource_group.rg]
-  #source  = "github.com/POps-Rox/tf-az-overlays-monitoringservicealerts"
+  #source  = "github.com/POps-Rox/terraform-az-overlays-monitoringservicealerts"
   #version = "x.x.x"
   source = "../.."
 
