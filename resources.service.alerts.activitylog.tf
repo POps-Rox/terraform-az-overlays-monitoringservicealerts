@@ -7,6 +7,9 @@ resource "azurerm_monitor_activity_log_alert" "activity_log_alert" {
   name        = coalesce(each.value.custom_name, data.popsrox_resource_name.activity_log_alerts[each.key].result)
   description = each.value.description
 
+  # azurerm 4.x made `location` required for this resource. Activity log alerts
+  # are a global resource so `"global"` is the canonical value.
+  location            = "global"
   resource_group_name = coalesce(each.value.resource_group_name, var.monitoring_resource_group_name)
   scopes              = each.value.scopes
 
