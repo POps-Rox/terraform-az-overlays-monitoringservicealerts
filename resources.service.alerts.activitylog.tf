@@ -4,7 +4,7 @@
 resource "azurerm_monitor_activity_log_alert" "activity_log_alert" {
   for_each = var.activity_log_alerts
 
-  name        = coalesce(each.value.custom_name, data.popsrox_resource_name.activity_log_alerts[each.key].result)
+  name        = each.value.custom_name != null && each.value.custom_name != "" ? each.value.custom_name : data.popsrox_resource_name.activity_log_alerts[each.key].result
   description = each.value.description
 
   # azurerm 4.x made `location` required for this resource. Activity log alerts
